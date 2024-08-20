@@ -221,4 +221,4 @@ dependencies:
   - pip:
     - brutelogger==0.1.2
     - opencv-python==4.8.0.76
-prefix: /home/chris/miniconda3/envs/typhon
+prefix: /home/typhon/miniconda3/envs/typhon

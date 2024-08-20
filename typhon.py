@@ -235,7 +235,7 @@ class Typhon(object):
         # Take the loss function of any heads
         metrics_test[dset_name] = metrics.get_multiclass_metrics(torch.nn.BCEWithLogitsLoss(), results, is_two_levels=True)
         metrics_test[dset_name]['overfitting'] = self.compute_overfitting_score(dset_name)
-        if verbose: utils.print_results(metrics_test[dset_name], 'LEVEL 2 ULTRA TYPHON')
+        if verbose: utils.print_results(metrics_test[dset_name], 'TWO LEVELS TYPHON')
 
         return metrics_test
 
@@ -1761,12 +1761,11 @@ class Typhon(object):
             # n batches per epoch with batch size, on n datasets
             n_samples = epoch * self.nb_batches_per_epoch * self.batch_size['train'] * len(self.dsets_names)
             if self.twolevels:
-                n_samples = epoch * self.nb_batches_per_epoch * self.batch_size['train'] * (1 + self.n_negative_heads)
+                n_samples = epoch * self.nb_batches_per_epoch * self.batch_size['train']
             # Also add the additional batches when computing within the epoch
             if self.ultra_typhon:
                 # Evaluation within the epoch, so epoch is currently not finished -> epoch-1 (except epoch 0)
-                n_samples = max(epoch-1, 0) * self.nb_batches_per_epoch * self.batch_size['train'] * (1 + self.n_negative_heads) + \
-                    self.n_more_batches * self.batch_size['train']
+                n_samples = max(epoch-1, 0) * self.nb_batches_per_epoch * self.batch_size['train'] + self.n_more_batches * self.batch_size['train']
         if type == 'specialized':
             # In specialization, one epoch is over the full training set
             n_samples = epoch * len(self.train_loop_loaders[dset_name].ds_folder)

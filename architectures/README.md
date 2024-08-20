@@ -1,20 +1,20 @@
 # Classification
-### caffe
-Inspired from [here](https://github.com/BVLC/caffe/blob/master/examples/cifar10/cifar10_quick_train_test.prototxt), the split is before the linear layers (79'238 weights for the feature extractor, 36'993 for the decision maker)
+### caffe_v1
+Inspired from [here](https://github.com/BVLC/caffe/blob/master/examples/cifar10/cifar10_quick_train_test.prototxt), the split is before the last linear layer (116'256 weights for the feature extractor, 65 for each decision maker)
 
 ### caffe_v2
-Same as caffe but with split before the last linear layer (116'256 weights for the feature extractor, 65 for the decision maker)
+Same as caffe_v1 but with split before the linear layers (79'238 weights for the feature extractor, 36'993 for each decision maker)
 
 ### caffe_v3
-Same as caffe but split after the first conv block (2'432 weights for the feature extractor, 113'889 for the decision maker)
+Same as caffe_v1 but split after the two first conv block (28'064 weights for the feature extractor, 88'257 for each decision maker)
 
 ### caffe_v4
-Same as caffe but split after the two first conv block (28'064 weights for the feature extractor, 88'257 for the decision maker)
+Same as caffe_v1 but split after the first conv block (2'432 weights for the feature extractor, 113'889 for each decision maker)
 
 ![caffe architecture](img/caffearchi.png)
 
 ### caffe_large
-Caffe but with one more linear layer, and doubling the number of filters in conv layers and units in linear ones
+Caffe_v1 but with one more linear layer, and doubling the number of filters in conv layers and units in linear ones
 
 ### vgg16_v1
 Inspired from [here](https://iq.opengenus.org/vgg16/), the split is before the last 3 linear layers

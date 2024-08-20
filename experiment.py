@@ -167,7 +167,7 @@ class Experiment:
                 n_epochs = int(n_samples / (self.cfg['nb_batches_per_epoch'] * self.cfg['batch_size']['train'] * len(self.cfg['dsets'])))
                 # Because in ultra typhon or two levels we train one positive and n negative examples per batch per dataset per epoch
                 if self.cfg['ultra_typhon'] or self.cfg['twolevels']:
-                    n_epochs = int(n_samples / (self.cfg['nb_batches_per_epoch'] * self.cfg['batch_size']['train'] * (self.cfg['n_negative_heads'] + 1)))
+                    n_epochs = int(n_samples / (self.cfg['nb_batches_per_epoch'] * self.cfg['batch_size']['train']))
             if type == 'spec':
                 # In specialization, we still take as the number of epochs
                 n_epochs = n_samples
